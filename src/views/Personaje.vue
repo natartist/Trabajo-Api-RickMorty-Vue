@@ -1,6 +1,6 @@
 <template>
-<div class="character">
-    <img :src="character.image" :alt="character.name">
+<div v-for="character of characters" :key="character.id">
+    <img src="{{ character.image }}" :alt="imgCharacter">
     <div class="character__info">
       <h3>{{ character.name }}</h3>
       <div class="status">
@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      personaje: {}
+      character: {}
     }
   },
   methods: {
