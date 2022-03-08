@@ -1,5 +1,5 @@
 <template>
-  <div class="character">
+  <div class="character" v-for="character of characters" :key="character.id">
     <img :src="character.image" :alt="character.name">
     <div class="character__info">
       <h3>{{ character.name }}</h3>
@@ -33,15 +33,16 @@
 export default {
 data() {
     return {
-      characters: []
-    }
+      characters: {}
+    };
   },
   methods: {
     async consumirCharacters() {
       try {
-        const data = await fetch("https://rickandmortyapi.com/api/character/");
-        const getCharacter = await data.json();
-        this.characters = getCharacters;
+        const data = await fetch(`https://rickandmortyapi.com/api/character`);
+        const getCharacters = await data.json();
+        this.characters = getCharacters.results;
+        
       console.log(this.characters);
       }catch (error) {
         console.log(error);

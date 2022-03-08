@@ -13,6 +13,9 @@
         <li class="nav-item">
              <router-link class="nav-link" to="/personaje">Personaje</router-link>
         </li>
+        <li class="nav-item">
+             <router-link class="nav-link" to="/personajes">Personajes</router-link>
+        </li>
        
         
       </ul>

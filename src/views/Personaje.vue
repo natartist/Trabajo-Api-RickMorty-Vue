@@ -1,6 +1,6 @@
 <template>
-<div v-for="character of characters" :key="character.id">
-    <img src="{{ character.image }}" :alt="imgCharacter">
+ <div class="character" v-for="character of characters" :key="character.id">
+    <img :src="character.image" :alt="character.name">
     <div class="character__info">
       <h3>{{ character.name }}</h3>
       <div class="status">
