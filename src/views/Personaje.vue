@@ -38,11 +38,11 @@ export default {
     }
   },
   methods: {
-   async mostrarPersonaje() {
+   async mostrarCharacter() {
      try {
        const data = await fetch(`https://rickandmortyapi.com/api/character/${this.$route.params.id}`);
-       const getPersonaje = await data.json();
-       this.personaje = getPersonaje;
+       const getCharacter = await data.json();
+       this.personaje = getCharacter;
      }catch (error) {
        console.log(error);
        throw error;
@@ -51,7 +51,7 @@ export default {
   },
 
   created() {
-    this.mostrarPersonaje();
+    this.mostrarCharacter();
   }
 
 }
