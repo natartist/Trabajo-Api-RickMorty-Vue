@@ -54,8 +54,8 @@ export default {
      try {
        const data = await fetch(`https://rickandmortyapi.com/api/character/${this.$route.params.id}`);
        const getCharacter = await data.json();
-       this.character = getCharacter;
-       
+       this.character = getCharacter.results;
+
      }catch (error) {
        console.log(error);
        throw error;
