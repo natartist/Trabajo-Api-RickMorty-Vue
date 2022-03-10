@@ -1,7 +1,11 @@
 <template>
- <div class="character" v-for="character of characters" :key="character.id">
-    <img :src="character.image" :alt="character.name">
-    <div class="character__info">
+<div class="container center">
+  
+      <h1 class="text-center mt-5">{{ character.name}}</h1>
+  <div class="cards" style="width: 18rem;">
+    <img :src="character.image" class="card-img-top" :alt="character.name">
+    
+    <div class="card-body">
       <h3>{{ character.name }}</h3>
       <div class="status">
         <span
@@ -23,12 +27,20 @@
           Location: 
           {{ character.location.name }}
         </span>
+         
       </div>
+      <!--<a href="#" class="btn btn-secondary">Ver personaje</a> esto!!-->
     </div>
   </div>
+    
+</div>
+ 
 
 
 </template>
+
+
+
 
 <script>
 export default {
@@ -42,7 +54,8 @@ export default {
      try {
        const data = await fetch(`https://rickandmortyapi.com/api/character/${this.$route.params.id}`);
        const getCharacter = await data.json();
-       this.personaje = getCharacter;
+       this.character = getCharacter;
+       
      }catch (error) {
        console.log(error);
        throw error;

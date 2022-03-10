@@ -1,61 +1,117 @@
 <template>
-<div class="container mt-5">
-  <h2 class="fst-italic text-center mb-5">Episodios</h2>
-
-  <div class="row" v-for="episode of episodes" :key="episode.id">
-    <div class="col">
-      <h3> {{  episode }}</h3>
-      <!-- Autor-->
-      <router-link class="episode" :to="`/personaje/${episode.personajeId}`">Personaje</router-link>
-      <p>{{  post.body }}</p>
-      <button class="btn btn-secondary" @click="episodesid(episode.id)">Ver comentarios</button>
+<div class="container center">
+  <div class="col-sm-10">
+    <div class="row">
+      <h1 class="text-center mt-5">Personajes</h1>
+  <div class="cards" style="width: 18rem;" v-for="character of characters" :key="character.id">
+    <img :src="character.image" class="card-img-top" :alt="character.name">
+    
+    <div class="card-body">
+      <h3>{{ character.name }}</h3>
+      <div class="status">
+        <span
+          :class="
+            character.status == 'Alive' ? 'alive' :
+            character.status == 'Dead' ? 'dead' :
+            'default'"
+        ></span>
+        <span>{{ character.status }} - {{ character.species }}</span>
       </div>
+      <div class="origen">
+        <span>
+          Origin: 
+          {{ character.origin.name }}
+        </span>
       </div>
+      <div class="location">
+        <!--<span>
+          Location: 
+          {{ character.location.name }}
+        </span>-->
+         
       </div>
-
-
-  
+      <router-link class="btn btn-secondary" to="/personaje"> Ver Personaje</router-link>
+      <!--<a href="#" class="btn btn-secondary">Ver personaje</a>-->
+    </div>
+  </div>
+    
+</div>
+ </div>
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-//import Personaje from './views/Personaje.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    
-  }, 
-  data() {
+data() {
     return {
-    episodes: [],
-    
+      characters: []
+    };
+  },
+  methods: {
+    async consumirCharacters() {
+      try {
+        const data = await fetch(`https://rickandmortyapi.com/api/character`);
+        const getCharacters = await data.json();
+        this.characters = getCharacters.results;
+        
+      console.log(this.characters);
+      }catch (error) {
+        console.log(error);
+        throw error;
+      }
+    }
+  },
+  created() {
+    this.consumirCharacters();
   }
-},
-methods: {
-  episodesid(id) {
-    console.log(id); 
-    this.episodesFiltrados = this.episodes.filter( episode => episode.episodeId == id);
-    console.log(this.episodesFiltrados);
-},
- async consumirEpisode() {
-   try {
-const data = await fetch(`https://rickandmortyapi.com/api/episode`);
-const getepisode = await data.json();
-this.episodes = getepisodes;
-console.log(this.episodes)
-   } catch (error) {
-     console.log(error);
-     throw error;
-   }
-  
-  }, 
-  
-},
-created() {
-  this.consumirEpisodes();
-  
 }
+</script>
+
+
+<style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Syne+Mono&display=swap');
+
+
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /*margin: 20px 0 0 120px;*/
+ /*background-image: url("./assets/rm.jpg");*/
 }
 
-</script>
+h1 {
+  font-family: 'Syne Mono', monospace;
+}
+
+.cards {
+  background: #fff;
+  margin-top: 20px;
+  margin-bottom: 0;
+  margin-right: 20px;
+  border-radius: 7px;
+  border: 1px solid #000;
+  box-shadow: 0 0px 10px 0 rgba(0,0,0,0.4);
+  /*display: inline;
+  align-content: space-between;*/
+  
+}
+.card-body {
+  font-size: 14px;
+  color: darkgray; 
+  font-family: 'Hubballi', cursive;
+
+}
+
+.card-img-top {
+  margin-top: 8px;
+}
+.btn {
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 0px;
+  font-family: 'Syne Mono', monospace;
+}
+</style>
