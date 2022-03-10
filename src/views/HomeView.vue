@@ -78,14 +78,15 @@ data() {
   height: 100vh;
   display: flex;
   justify-content: center;
-  /*margin: 20px 0 0 120px;*/
  /*background-image: url("./assets/rm.jpg");*/
 }
 
 h1 {
   font-family: 'Syne Mono', monospace;
   background-color: white;
-width: 900px;
+  width: 900px;
+  border-radius: 5px;
+  border: 1px solid #000;
 }
 
 .cards {
