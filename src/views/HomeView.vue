@@ -84,6 +84,8 @@ data() {
 
 h1 {
   font-family: 'Syne Mono', monospace;
+  background-color: white;
+width: 900px;
 }
 
 .cards {
