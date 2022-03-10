@@ -30,7 +30,7 @@
         </span>-->
          
       </div>
-      <router-link class="btn btn-secondary" to="/personaje"> Ver Personaje</router-link>
+      <router-link class="btn btn-secondary" :to="`/personaje/${character.id}`"> Ver Personaje</router-link>
       <!--<a href="#" class="btn btn-secondary">Ver personaje</a>-->
     </div>
   </div>

@@ -6,9 +6,11 @@
 </template>
 
 <style>
-.fondo {
+body {
   background-image: url("./assets/rm.jpg");
-  height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 </style>
