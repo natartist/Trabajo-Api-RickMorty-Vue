@@ -12,16 +12,7 @@ const routes = [
     name: "Personaje",
     component: () => import ("../views/Personaje.vue")
   },
-  {
-    path: "/personajes",
-    name: "Personajes",
-    component: () => import ("../views/Personajes.vue")
-  },
-  {
-    path: "/:catchAll(.*)",
-    name: "Error404",
-    component: () => import(/* webpackChunkName: "user" */ "../views/Error404.vue")
-  },
+  
 ]
 
 const router = createRouter({
